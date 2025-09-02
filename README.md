@@ -29,6 +29,7 @@ An AI application to detect and display 3D model car status in real-time. Using 
 
 **5. Run the frontend**
    ```bash
+   cd my-app
    npm run dev
    ```
 
