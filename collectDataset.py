@@ -15,10 +15,10 @@ DATASET_NUM = 200
 
 # Mapping tombol komponen di web -> nama label
 COMPONENTS = {
-    # "Front Left Door": "front_left",
-    # "Front Right Door": "front_right",
-    # "Rear Left Door": "rear_left",
-    # "Rear Right Door": "rear_right",
+    "Front Left Door": "front_left",
+    "Front Right Door": "front_right",
+    "Rear Left Door": "rear_left",
+    "Rear Right Door": "rear_right",
     "Hood": "hood"
 }
 
@@ -55,20 +55,19 @@ def toggle_component(button_text):
     btn.click()
     time.sleep(1)
 
-# for i in range(DATASET_NUM):
-#     canvas = driver.find_element(By.TAG_NAME, "canvas")
-#     random_rotate_car(canvas, steps=3)
-#     # capture(comp_label, "close", i)
-#     capture("all", "close", i)
+# Close semua komponen
+for i in range(DATASET_NUM):
+    canvas = driver.find_element(By.TAG_NAME, "canvas")
+    random_rotate_car(canvas, steps=3)
+    capture("all", "close", i)
 
 # Loop semua komponen
 for comp_name, comp_label in COMPONENTS.items():
-    # for state in ["closed", "open"]:
-        # Pastikan ke state benar
+    # Open komponen
     toggle_component(comp_name)  
 
     # Ambil 10 variasi view acak
-    for i in range(0,95):
+    for i in range(DATASET_NUM):
         canvas = driver.find_element(By.TAG_NAME, "canvas")
         random_rotate_car(canvas, steps=1)
         capture(comp_label, "open", i)
