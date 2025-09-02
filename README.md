@@ -1,6 +1,6 @@
 # Car Components Status Detection
 
-A simple AI application to detect and display 3D model car status in real-time.
+An AI application to detect and display 3D model car status in real-time.
 
 ---
 
