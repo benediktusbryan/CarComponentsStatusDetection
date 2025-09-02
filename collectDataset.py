@@ -66,7 +66,7 @@ for comp_name, comp_label in COMPONENTS.items():
     # Open komponen
     toggle_component(comp_name)  
 
-    # Ambil 10 variasi view acak
+    # Ambil variasi view acak
     for i in range(DATASET_NUM):
         canvas = driver.find_element(By.TAG_NAME, "canvas")
         random_rotate_car(canvas, steps=1)
@@ -74,3 +74,4 @@ for comp_name, comp_label in COMPONENTS.items():
     toggle_component(comp_name)
 
 driver.quit()
+
