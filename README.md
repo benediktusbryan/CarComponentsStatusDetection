@@ -6,85 +6,104 @@ An AI application to detect and display 3D model car status in real-time.
 
 ## Setup
 
-1. **Clone this repository**
+**1. Clone this repository**
    ```bash
    https://github.com/benediktusbryan/CarComponentsStatusDetection.git
    cd CarComponentsStatusDetection
    ```
 
-2. **Install dependencies**
+**2. Install dependencies**
    ```bash
    npm install
    ```
 
-3. **Run the backend**
+**3. Run the backend**
    ```bash
    uvicorn main:app --reload
    ```
 
-4. **Run the python agent**
+**4. Run the python agent**
    ```bash
    python predict.py
    ```
 
-5. **Run the frontend**
+**5. Run the frontend**
    ```bash
    npm run dev
    ```
 
-6. Open in browser:  
+**6. Open in browser**  
    ```
    http://localhost:5173
    ```
+
+**7. Open the browser from Command Prompt**
+   ```bash
+   "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:/ChromeDebug"
+   ```
+
+**8. Open the 3D Model Car**
+   [3D Model Car Simulation](https://euphonious-concha-ab5c5d.netlify.app/)
 
 ---
 
 ## Usage
 
-1. **Open the browser from Command Prompt**
-   ```bash
-   "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:/ChromeDebug"
-   ```
+- **Backend API**:
+  - `POST /predict` → Upload an image, get prediction results.
+  - `GET /status` → Get the latest status (used by frontend).
 
-2. **Open the 3D Model Car**
-   [3D Model Car Simulation](https://euphonious-concha-ab5c5d.netlify.app/)
-   
-3. **Monitor the Dashboard**
-- Each status will be displayed with a badge:
-  - ✅ **Green** = Open
-  - ❌ **Red** = Closed
+- **Frontend**:
+  - Displays a list of car components with their status (`Open` / `Closed`).
 
----
+Example API response:
+```json
+{
+  "status": {
+    "Front Right": "Closed",
+    "Front Left": "Open",
+    "Rear Right": "Closed",
+    "Rear Left": "Closed",
+    "Hood": "Open"
+  }
+}
+```
 
 ## Troubleshooting
 
-### 1. Node.js Version Error
-```
-You are using Node.js 18.x
-Vite requires Node.js version 20.19+ or 22.12+
-```
- **Solution**: Upgrade Node.js  
-- Download from [Node.js Official Site](https://nodejs.org/)  
-- Or use [nvm](https://github.com/nvm-sh/nvm) to manage versions:
-  ```bash
-  nvm install 22
-  nvm use 22
-  ```
+### Backend
+- **Issue:** `RuntimeError: CUDA error: device not found`  
+  **Solution:** Run on CPU by ensuring `device = "cpu"` in `main.py`.
 
-### 2. `npm error could not determine executable to run`
-- Delete `node_modules` and reinstall:
+- **Issue:** `FileNotFoundError: 'car_parts_model.pth' not found`  
+  **Solution:** Place the trained model in the backend folder or update the path.
+
+- **Issue:** API returns empty status.  
+  **Solution:** Ensure at least one prediction request was sent before calling `/status`.
+
+---
+
+### Frontend
+- **Issue:** `You are using Node.js 18.16.1. Vite requires Node.js version 20.19+ or 22.12+.`  
+  **Solution:** Upgrade Node.js using [Node.js official site](https://nodejs.org) or `nvm`.
+
+- **Issue:** `npm error could not determine executable to run`  
+  **Solution:** Delete `node_modules` and reinstall:
   ```bash
   rm -rf node_modules package-lock.json
   npm install
   ```
-- Ensure `npm` is installed correctly:
-  ```bash
-  npm -v
-  node -v
-  ```
 
-### 3. API Not Found / CORS Issues
-- Make sure your backend (`http://127.0.0.1:8000/status`) is running.
-- If CORS error appears, enable CORS in backend (e.g., using `fastapi.middleware.cors` in FastAPI).
+---
+
+### Selenium Script
+- **Issue:** `selenium.common.exceptions.WebDriverException: unknown error: cannot connect to Chrome`  
+  **Solution:** Start Chrome with `--remote-debugging-port=9222` and ensure no other Chrome instance is running.
+
+- **Issue:** `selenium.common.exceptions.NoSuchElementException: no such element: Unable to locate element: {"method":"tag name","selector":"canvas"}`  
+  **Solution:** Verify the page actually contains a `<canvas>` element.
+
+- **Issue:** API call timeout.  
+  **Solution:** Ensure FastAPI backend is running on `http://127.0.0.1:8000`.
 
 ---
