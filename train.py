@@ -146,7 +146,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 class_names = ["front_left_open", "front_right_open", 
                "rear_left_open", "rear_right_open", "hood_open"]
 
-history = train_model(model, train_loader, val_loader, epochs=10, device="cuda", save_path="carparts_best.pth")
+history = train_model(model, train_loader, val_loader, epochs=50, device="cuda", save_path="carparts_best.pth")
 
 plot_loss(history, save_path="loss_plot.png")
 
