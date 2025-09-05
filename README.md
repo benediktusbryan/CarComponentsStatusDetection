@@ -12,38 +12,42 @@ An AI application to detect and display 3D model car status in real-time. Using 
    cd CarComponentsStatusDetection
    ```
 
-**2. Install dependencies**
+**2. Download the model file**
+   [Download model file](https://drive.google.com/file/d/1OQAYN74HhhgoTGMXecnAx4FzJS-BP7Fx/view?usp=sharing)
+   Don't forget to move model file to CarComponentsStatusDetection directory
+
+**3. Install dependencies**
    ```bash
    npm install
    ```
 
-**3. Run the backend**
+**4. Run the backend**
    ```bash
    uvicorn main:app --reload
    ```
 
-**4. Run the python agent**
+**5. Run the python agent**
    ```bash
    python predict.py
    ```
 
-**5. Run the frontend**
+**6. Run the frontend**
    ```bash
    cd my-app
    npm run dev
    ```
 
-**6. Open in browser**  
+**7. Open in browser**  
    ```
    http://localhost:5173
    ```
 
-**7. Open the browser from Command Prompt**
+**8. Open the browser from Command Prompt**
    ```bash
    "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:/ChromeDebug"
    ```
 
-**8. Open the 3D Model Car**
+**9. Open the 3D Model Car**
    [3D Model Car Simulation](https://euphonious-concha-ab5c5d.netlify.app/)
 
 ---
