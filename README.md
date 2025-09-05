@@ -14,7 +14,9 @@ An AI application to detect and display 3D model car status in real-time. Using 
 
 **2. Download the model file**
 
-   [Download model file](https://drive.google.com/file/d/1OQAYN74HhhgoTGMXecnAx4FzJS-BP7Fx/view?usp=sharing)
+   [Download Model File](https://drive.google.com/file/d/1OQAYN74HhhgoTGMXecnAx4FzJS-BP7Fx/view?usp=sharing)
+
+   
    Don't forget to move model file to CarComponentsStatusDetection directory
 
 **3. Install dependencies**
